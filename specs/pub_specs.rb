@@ -9,4 +9,9 @@ class PubTest < MiniTest::Test
         @pub = Pub.new("The Red Lion", 1000)
     end
 
+    def test_pub_name()
+        assert_equal("The Red Lion", @pub.name)
+    end
+
 end
+
