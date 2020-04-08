@@ -13,8 +13,8 @@ class PubTest < MiniTest::Test
         @drink3 = Drink.new("Vodka", 30)
         @drink4 = Drink.new("White Wine", 15)
 
-        @customer3 = Customer.new("Katie", 200)
-        @customer4 = Customer.new("Hannah", 30)
+        @customer3 = Customer.new("Katie", 200, 17)
+        @customer4 = Customer.new("Hannah", 30, 23)
 
     end
 
@@ -30,6 +30,19 @@ class PubTest < MiniTest::Test
         @pub.sale(@drink3.price)
         assert_equal(1030, @pub.till())
     end
+
+    def test_check_age__fails()
+        @pub.check_age(@customer3.age)
+        assert_equal(false, @pub.serve_customer())
+    end
+
+    def test_check_age__passes()
+        @pub.check_age(@customer4.age)
+        assert_equal(true, @pub.serve_customer())
+    end
+
+
+
 
 end
 
