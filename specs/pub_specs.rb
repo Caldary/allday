@@ -31,13 +31,15 @@ class PubTest < MiniTest::Test
         assert_equal(1030, @pub.till())
     end
 
-    def test_check_age__fails()
-        @pub.check_age(@customer3.age)
+    def test_check_age_and_soberness__fails()
+        @pub.check_age_and_soberness(@customer3.age)
+        @pub.check_age_and_soberness(@customer3.drunkness)
         assert_equal(false, @pub.serve_customer())
     end
 
-    def test_check_age__passes()
-        @pub.check_age(@customer4.age)
+    def test_check_age_and_soberness__passes()
+        @pub.check_age_and_soberness(@customer4.age)
+        @pub.check_age_and_soberness(@customer4.drunkne)
         assert_equal(true, @pub.serve_customer())
     end
 
